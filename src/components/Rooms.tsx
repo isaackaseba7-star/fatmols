@@ -41,6 +41,7 @@ export default function Rooms() {
                   src={room.image} 
                   alt={room.name} 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 <h3 className="absolute bottom-4 left-6 text-2xl font-serif font-medium text-white">{room.name}</h3>

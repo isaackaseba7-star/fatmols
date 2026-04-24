@@ -9,6 +9,7 @@ export default function Hero() {
           src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=80&w=2670"
           alt="Modern hotel pool in Zambia"
           className="w-full h-full object-cover"
+          referrerPolicy="no-referrer"
         />
         {/* Dark/green gradient overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-brand-green-dark/80 to-black/50 mix-blend-multiply" />

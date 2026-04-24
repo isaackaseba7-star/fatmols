@@ -19,6 +19,7 @@ export default function WhyChooseUs() {
                 src="https://images.unsplash.com/photo-1542314831-c6a4d270b22a?auto=format&fit=crop&q=80&w=1200" 
                 alt="Relaxing environment" 
                 className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
               />
             </div>
             {/* Floating badge */}
