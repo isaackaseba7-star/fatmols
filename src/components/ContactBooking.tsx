@@ -1,8 +1,26 @@
-import { Phone, MapPin, Mail, Navigation } from 'lucide-react';
+import { useState, FormEvent } from 'react';
+import { Phone, MapPin, Mail, Navigation, CheckCircle2, X } from 'lucide-react';
 
 export default function ContactBooking() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [bookingDetails, setBookingDetails] = useState({ name: '', phone: '', checkIn: '', guests: '' });
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    setBookingDetails({
+      name: formData.get('name') as string,
+      phone: formData.get('phone') as string,
+      checkIn: formData.get('checkIn') as string,
+      guests: formData.get('guests') as string,
+    });
+    setIsModalOpen(true);
+    e.currentTarget.reset();
+  };
+
   return (
-    <section id="contact" className="py-20 bg-[#faf9f6]">
+    <>
+      <section id="contact" className="py-20 bg-[#faf9f6]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           
@@ -57,32 +75,32 @@ export default function ContactBooking() {
           <div className="space-y-8">
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
               <h3 className="text-xl font-semibold mb-6">Request a Reservation</h3>
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                    <input type="text" className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition-shadow" placeholder="Your full name" />
+                    <input name="name" required type="text" className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition-shadow" placeholder="Your full name" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                    <input type="tel" className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition-shadow" placeholder="Your phone number" />
+                    <input name="phone" required type="tel" className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition-shadow" placeholder="Your phone number" />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Check-in</label>
-                     <input type="date" className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition-shadow" />
+                     <input name="checkIn" required type="date" className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition-shadow" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Guests</label>
-                    <select className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition-shadow bg-white">
+                    <select name="guests" className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition-shadow bg-white">
                       <option>1 Guest</option>
                       <option>2 Guests</option>
                       <option>3+ Guests</option>
                     </select>
                   </div>
                 </div>
-                <button type="button" className="w-full py-4 mt-2 bg-brand-green-dark hover:bg-black text-white font-medium rounded-xl transition-colors">
+                <button type="submit" className="w-full py-4 mt-2 bg-brand-green-dark hover:bg-black text-white font-medium rounded-xl transition-colors">
                   Send Booking Request
                 </button>
               </form>
@@ -109,5 +127,42 @@ export default function ContactBooking() {
         </div>
       </div>
     </section>
+
+    {/* Confirmation Modal */}
+    {isModalOpen && (
+      <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm px-4">
+        <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl relative animate-in fade-in zoom-in duration-200">
+          <button onClick={() => setIsModalOpen(false)} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors">
+            <X size={24} />
+          </button>
+          
+          <div className="text-center mb-6">
+            <div className="w-16 h-16 bg-brand-green-light rounded-full flex items-center justify-center mx-auto mb-4 text-brand-green">
+              <CheckCircle2 size={32} />
+            </div>
+            <h3 className="text-2xl font-serif font-semibold text-gray-900 mb-2">Booking Requested!</h3>
+            <p className="text-gray-600">
+              Thank you, {bookingDetails.name}. We have received your request and our team will contact you shortly to confirm your reservation.
+            </p>
+          </div>
+          
+          <div className="bg-gray-50 rounded-xl p-5 space-y-3 text-sm border border-gray-100">
+            <h4 className="font-semibold text-gray-900 border-b border-gray-200 pb-2 mb-3">Your Details</h4>
+            <div className="flex justify-between items-center"><span className="text-gray-500">Name:</span> <span className="font-medium text-gray-900">{bookingDetails.name}</span></div>
+            <div className="flex justify-between items-center"><span className="text-gray-500">Phone:</span> <span className="font-medium text-gray-900">{bookingDetails.phone}</span></div>
+            <div className="flex justify-between items-center"><span className="text-gray-500">Check-in:</span> <span className="font-medium text-gray-900">{bookingDetails.checkIn || 'Not specified'}</span></div>
+            <div className="flex justify-between items-center"><span className="text-gray-500">Guests:</span> <span className="font-medium text-gray-900">{bookingDetails.guests}</span></div>
+          </div>
+          
+          <button 
+            onClick={() => setIsModalOpen(false)} 
+            className="w-full mt-6 py-3 bg-brand-green hover:bg-brand-green-dark text-white font-medium rounded-xl transition-colors"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    )}
+    </>
   );
 }
