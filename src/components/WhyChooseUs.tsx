@@ -16,7 +16,7 @@ export default function WhyChooseUs() {
           <div className="order-2 lg:order-1 relative">
             <div className="relative rounded-2xl overflow-hidden aspect-[4/5] md:aspect-square lg:aspect-[4/5] shadow-lg">
               <img 
-                src="https://images.unsplash.com/photo-1542314831-c6a4d270b22a?auto=format&fit=crop&q=80&w=1200" 
+                src="https://images.unsplash.com/photo-1529290130-4ca3753253ae?auto=format&fit=crop&q=80&w=1200" 
                 alt="Relaxing environment" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"

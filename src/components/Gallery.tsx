@@ -1,11 +1,11 @@
 export default function Gallery() {
   const images = [
-    { src: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&q=80&w=800", alt: "Clean hotel room" },
-    { src: "https://images.unsplash.com/photo-1582610116397-edb318620f90?auto=format&fit=crop&q=80&w=800", alt: "Modern hotel exterior" },
-    { src: "https://images.unsplash.com/photo-1542314831-c6a4d270b22a?auto=format&fit=crop&q=80&w=800", alt: "African hotel pool" },
-    { src: "https://images.unsplash.com/photo-1618155662706-e0e64c3cbf96?auto=format&fit=crop&q=80&w=800", alt: "Breakfast setup" },
-    { src: "https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=800", alt: "Outdoor relaxation" },
-    { src: "https://images.unsplash.com/photo-1560662105-ffcb8b4fdec8?auto=format&fit=crop&q=80&w=800", alt: "Zambia hospitality interior" }
+    { src: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&q=80&w=800", alt: "Clean hotel room" },
+    { src: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&q=80&w=800", alt: "Modern hotel exterior" },
+    { src: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=80&w=800", alt: "African hotel pool" },
+    { src: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80&w=800", alt: "Breakfast setup" },
+    { src: "https://images.unsplash.com/photo-1529290130-4ca3753253ae?auto=format&fit=crop&q=80&w=800", alt: "Outdoor relaxation" },
+    { src: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=800", alt: "Zambia hospitality interior" }
   ];
 
   return (
